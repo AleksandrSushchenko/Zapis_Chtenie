@@ -19,15 +19,18 @@ print('________________Задача 2_____________________')
 
 e = {}
 dishes = []
-def get_shop_list_by_dishes(dishes, person_count):
-    for j in range(len(dishes)):
-        if dishes[j] in cook_book.keys():
-            for i in cook_book[dishes[j]]:
-                p = {'quantity': int(i.get('quantity')) * int(person_count), 'measure': i.get('measure')}
-                f = {i.get('indigrient_name'): p}
-                e.update(f)
-            print(e)
-        else:
-            print('no')
 
-get_shop_list_by_dishes(['Омлет','Фахитос','Утка по-пекински'], 10)
+
+def get_shop_list_by_dishes(dishes, person_count):
+    for i in dishes:
+        f = cook_book.get(i)
+        for j in f:
+            f = {
+                j.get('indigrient_name'): {'quantity': int(j.get('quantity')) * int(person_count),
+                                           'measure': j.get('measure')}
+            }
+            e.update(f)
+    print(e)
+
+
+get_shop_list_by_dishes(['Омлет', 'Фахитос'], 3)
