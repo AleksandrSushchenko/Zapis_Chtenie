@@ -34,3 +34,6 @@ def get_shop_list_by_dishes(dishes, person_count):
 
 
 get_shop_list_by_dishes(['Омлет', 'Фахитос'], 3)
+
+print('________________Задача 3_____________________')
+
