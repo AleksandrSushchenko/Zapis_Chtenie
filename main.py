@@ -39,34 +39,45 @@ get_shop_list_by_dishes(['Омлет', 'Фахитос'], 3)
 
 print('________________Задача 3_____________________')
 
-s={}
+s = {}
 with open('1.txt', 'r', encoding='utf8') as f1:
-    s1 = {os.path.basename('1.txt') : len(f1.readlines())}
+    s1 = {os.path.basename('1.txt'): len(f1.readlines())}
     s.update(s1)
+with open('1.txt', 'r', encoding='utf8') as f_1:
+    s_1 = f_1.read()
 
 with open('2.txt', 'r', encoding='utf8') as f2:
-    s2 = {os.path.basename('2.txt') : len(f2.readlines())}
+    s2 = {os.path.basename('2.txt'): len(f2.readlines())}
     s.update(s2)
+with open('2.txt', 'r', encoding='utf8') as f_2:
+    s_2 = f_2.read()
 
 with open('3.txt', 'r', encoding='utf8') as f3:
-    s3 = {os.path.basename('3.txt') : len(f3.readlines())}
+    s3 = {os.path.basename('3.txt'): len(f3.readlines())}
     s.update(s3)
+with open('3.txt', 'r', encoding='utf8') as f_3:
+    s_3 = f_3.read()
 
 sorted_tuples = sorted(s.items(), key=lambda item: item[1])
-#sorted_dict = {k: v for k, v in sorted_tuples}
-print(sorted_tuples)
-with open('4.txt', 'w') as p:
-    a = sorted_tuples[0][0]
-    b = sorted_tuples[0][1]
-    print(a)
-    p.write(a)
 
 
+def zapis(pr_list_1):
+    for pr_1 in pr_list_1:
+        with open('4.txt', 'a') as p:
+            p.write(str(pr_1))
+            p.write('\n')
 
 
+for pr in sorted_tuples:
+    pr_list = list(pr)
+    if pr_list[0] == "1.txt":
+        pr_list.append(s_1)
+        zapis(pr_list)
 
+    elif pr_list[0] == "2.txt":
+        pr_list.append(s_2)
+        zapis(pr_list)
 
-
-
-
-
+    elif pr_list[0] == "3.txt":
+        pr_list.append(s_3)
+        zapis(pr_list)
